@@ -1,6 +1,8 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "exactOptionalPropertyTypes": false,
+    "skipLibCheck": true,
     /* Modules */
     "rootDir": "src" /* Specify the root folder within your source files. */,
 
@@ -9,5 +11,12 @@
     // "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
   },
   "include": ["src"],
-  "typeRoots": ["./node_modules/@types", "./src/types"]
+  "typeRoots": ["./node_modules/@types", "./src/types"],
+  "moduleResolution": "node",
+  "module": "esnext",
+  "target": "esnext",
+  "esModuleInterop": true,
+  "resolveJsonModule": true
+
+  
 }

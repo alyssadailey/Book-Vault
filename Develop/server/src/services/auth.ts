@@ -1,7 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
+import { ExpressContextFunctionArgument } from '@apollo/server/express4';
 import jwt from 'jsonwebtoken';
-
 import dotenv from 'dotenv';
+// import type { ExpressContext } from 'apollo-server-express'
+
+
 dotenv.config();
 
 interface JwtPayload {
@@ -10,6 +13,8 @@ interface JwtPayload {
   email: string,
 }
 
+
+// Middleware to authenticate JWT token
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
@@ -31,9 +36,48 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   }
 };
 
+// Apollo Server context version (for GraphQL)
+export const authenticateTokenContext = async ({ req }: ExpressContextFunctionArgument) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  const secret = process.env.JWT_SECRET_KEY || '';
+
+  if (!token) return { user: null };
+
+  try {
+    const decodedUser = jwt.verify(token, secret);
+    return { user: decodedUser };
+  } catch (err) {
+    console.error('Invalid token');
+    return { user: null };
+  }
+};
+
 export const signToken = (username: string, email: string, _id: unknown) => {
   const payload = { username, email, _id };
   const secretKey = process.env.JWT_SECRET_KEY || '';
 
   return jwt.sign(payload, secretKey, { expiresIn: '1h' });
 };
+
+// Apollo-compatible context function
+export const getUserFromToken = ({ req }: { req: any }) => {
+  let token = req.headers.authorization || '';
+
+  if (token.startsWith('Bearer ')) {
+    token = token.split(' ')[1];
+  }
+
+  if (!token) {
+    return { user: null };
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY || '');
+    return { user: decoded };
+  } catch (err) {
+    console.warn('Invalid token:', err);
+    return { user: null };
+  }
+};
+
+
