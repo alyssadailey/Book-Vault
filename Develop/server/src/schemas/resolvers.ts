@@ -34,12 +34,13 @@ Mutation: {
 
 
       //checks if the user is logged in still and saves a book to the user's savedBooks array only if it isn't already saved.
-    saveBook: async (_parent: any, { input }: any, context: any) => {
+    saveBook: async (_parent: any, { bookData }: any, context: any) => {
+      console.log('input', bookData);
       if (!context.user) throw new AuthenticationError('Not logged in');
       return User.findByIdAndUpdate(
         context.user._id,
         {
-          $addToSet: { savedBooks: input },
+          $addToSet: { savedBooks: bookData },
         },
         { new: true }
       );
