@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks');
+const mongoURI = process.env.MONGODB_URI;
+
+if (!mongoURI) {
+  throw new Error('MONGODB_URI is not defined in environment variables');
+}
+
+mongoose.connect(mongoURI);
 
 export default mongoose.connection;
