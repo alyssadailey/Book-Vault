@@ -18,8 +18,9 @@
 
 ## Description
 
-ThoughtHub is a backend API that powers a social networking platform where users can create an account, share their thoughts, react to others' thoughts, and manage a list of friends. Built with Node.js, Express, MongoDBCompass, and Mongoose, this project provides a solid foundation for scalable social media applications. The API supports full CRUD operations for users and thoughts connections. Reactions and friend support Create and Delete connections.
+Book Vault is a full-stack web application that allows users to search for books using the Google Books API, view detailed book information, and save their favorite titles to a personal collection. Each user can sign up or log in to maintain their own saved book list, ensuring a personalized experience. Saved books appear under a dedicated "Saved Books" tab, and users can also remove them at any time. The application provides a seamless user interface with dynamic feedback—once a book is saved, the "Save" button is disabled and updates to indicate it has already been saved.
 
+The primary goal of this project was to refactor a RESTful backend into a GraphQL API, improving flexibility and efficiency in data fetching. The new GraphQL server supports all core functionality, including user authentication, book saving and deletion, and personalized book queries.
 
 ## Screenshots
 
@@ -42,49 +43,55 @@ Screenshot Previews of the Webpage:
 
 1. Clone the repository:
 
-git clone https://github.com/alyssadailey/thoughthub.git
+git clone https://github.com/alyssadailey/Book-Vault.git
 
 2. Navigate into the project directory:
 
-cd Challenge-17-ThoughtHub
+cd Develop
 
-3. Install dependencies:
+3. Install dependencies for client and server:
 
 npm install
 
-4.Start the server:
+cd client && npm install
 
-npm run start:dev
+4. Set up environment variables (Google Books API key, MongoDB URI, etc.) in a .env file.
+
+5. Start the application (runs both client and GraphQL server):
+
+npm run develop
 
 
 ## Usage
 
-1. Create a user by sending a POST request to /api/users.
+1. Launch the application in your browser.
 
-2. Add friends by sending a PUT request to /api/users/:userId/friends/:friendId.
+2. Sign up for a new account or log in to an existing one.
 
-3. Post thoughts using a POST request to /api/thoughts.
+3. Use the search bar to search for books by title, author, or keyword (powered by Google Books API).
 
-4. React to thoughts with a POST request to /api/thoughts/:thoughtId/reactions.
+4. Click "Save This Book" to add a book to your personal collection (data sent through GraphQL mutations). If the book has already been saved, the button will be disabled and display "You've already saved this book."
 
-5. Remove reactions, delete thoughts, or unfriend users using DELETE requests.
+5. Navigate to the "Saved Books" tab to view or delete any saved titles—user-specific data is managed entirely via GraphQL queries and mutations.
 
 
 ## Features
 
--User Management: Create, update, and delete users.
+- Book Search: Search the Google Books API for books based on title, author, or keywords.
 
--Thoughts System: Users can create, edit, and delete thoughts.
+- Save Books: Save books to your personal collection with a single click.
 
--Reactions: Users can react to thoughts with custom messages.
+- Remove Books: Easily delete saved books from your list.
 
--Friend Connections: Add and remove friends dynamically.
+- User Authentication: Secure login and signup functionality to manage user-specific data.
 
--MongoDB with Mongoose: Efficient NoSQL database handling.
+- Real-time Feedback: Dynamic button updates and interface changes upon saving a book.
 
--Express.js API: RESTful API structure for easy integration.
+- Persistent Data: Saved books are stored in a database associated with each user account.
 
--Insomnia/Postman Support: Test endpoints with ease.
+-  GraphQL API: Replaced the traditional REST API with a GraphQL server to improve query performance and flexibility.
+
+-  MERN Stack: Built with MongoDB, Express.js, React, Node.js, and Apollo Server for GraphQL integration.
 
 
 ## License
@@ -118,9 +125,9 @@ To test run:
 
 ## Project Links
 
-Repository: https://github.com/alyssadailey/ThoughtHub
+Repository: https://github.com/alyssadailey/Book-Vault
 
-Video Demo: https://www.loom.com/share/89deb50b7e2942619e432d323ef4f3a5?sid=5f9d47e5-3a85-408b-8461-ceb39684d448
+Live application link: 
 
 
 
