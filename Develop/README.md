@@ -26,17 +26,17 @@ The primary goal of this project was to refactor a RESTful backend into a GraphQ
 
 Screenshot Previews of the Webpage:
 
-###  Create a user
-<img src="./assets/SS-Create-User.png" width="300">
+###  Sign up if you don't have an existing account or login if you already have an account
+<img src="./client/public/Sign-up-SS.png" width="300">
 
-### Post a thought
-<img src="./assets/SS-Create-Thought.png" width="300">
+### Search for any book you'd like
+<img src="./client/public/Book-Search-SS.png" width="300">
 
-### Add a friend
-<img src="./assets/SS-Add-Friend.png" width="300">
+### Save the book if it sparks your interest
+<img src="./client/public/Save-Book-SS.png" width="300">
 
-### React to a Thought
-<img src="./assets/SS-Create-Thought.png" width="300">
+### See all of your saved books in your See Your Books tab
+<img src="./client/public/See-your-books-SS.png" width="300">
 
 
 ## Installation
@@ -127,7 +127,7 @@ To test run:
 
 Repository: https://github.com/alyssadailey/Book-Vault
 
-Live application link: 
+Live application link: https://book-vault-lxfv.onrender.com
 
 
 
@@ -137,5 +137,7 @@ Please reach me here with additional questions:
 
 Github: https://github.com/alyssadailey <br>
 Email: alyssadailey28@gmail.com </p>
+
+💻Happy Coding!
 
 
